@@ -7,6 +7,7 @@ import GalleryScreen from '../Screens/GalleryScreen';
 import SplashScreen from '../Screens/SplashScreen';
 import { AppStackScreenParamsProps } from '../types/navigation';
 import { useAppTheme } from '../utils/theme';
+
 const Stack = createNativeStackNavigator<AppStackScreenParamsProps>();
 const AppStack = () => {
   const theme = useAppTheme();
@@ -24,6 +25,7 @@ const AppStack = () => {
           name="CameraScreen"
           component={CameraScreen}
         />
+
         <Stack.Screen
           options={{ headerShown: true, title: 'Photo Gallery' }}
           name="GalleryScreen"
