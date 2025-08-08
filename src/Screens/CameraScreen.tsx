@@ -75,7 +75,16 @@ const CameraScreen = () => {
     setCameraPosition(prev => (prev === 'back' ? 'front' : 'back'));
   };
 
-  if (!device) return <Text>Loading camera...</Text>;
+  if (!device)
+    return (
+      <Text
+        style={{
+          color: colors.text,
+        }}
+      >
+        Loading camera...
+      </Text>
+    );
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>

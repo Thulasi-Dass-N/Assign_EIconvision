@@ -13,7 +13,10 @@ function App() {
   return (
     <SafeAreaProvider>
       <SafeAreaView
-        style={{ flex: 1, backgroundColor: isDarkMode ? 'black' : 'white' }}
+        style={[
+          styles.safeArea,
+          { backgroundColor: isDarkMode ? 'black' : 'white' },
+        ]}
       >
         <View style={styles.container}>
           <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
@@ -27,6 +30,10 @@ function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  safeArea: {
+    flex: 1,
+    backgroundColor: 'transparent',
   },
 });
 
