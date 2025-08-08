@@ -1,21 +1,26 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import { NewAppScreen } from '@react-native/new-app-screen';
+import { useEffect } from 'react';
 import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import AppStack from './src/Navigation/AppStack';
+import { initDB } from './src/utils/localDB';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
+  useEffect(() => {
+    initDB(); // 🔧 This ensures the table exists
+  }, []);
 
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NewAppScreen templateFileName="App.tsx" />
-    </View>
+    <SafeAreaProvider>
+      <SafeAreaView
+        style={{ flex: 1, backgroundColor: isDarkMode ? 'black' : 'white' }}
+      >
+        <View style={styles.container}>
+          <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+          <AppStack />
+        </View>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
